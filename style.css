@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DBD3D3;
+}
+
+.container {
+    display: grid;
+    grid-template: repeat(3, 200px) / repeat(3, 200px);
+    border: 2px solid #091057;
+    border-radius: 5px;
+    background-color: #fff;
+
+}
+
+
+.itemBox {
+    align-items: center;
+    text-align: center;
+    border: 2px solid #091057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemBox:hover {
+    cursor: pointer;
+}
+
+svg {
+    height: 100px;
+    width: 100px;
+}
