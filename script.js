@@ -9,7 +9,7 @@ let winningCombinations = [
     [0,4,8], [2,4,6]
 ];
 let gameActive = false;
-let playersTurn = 'X';
+let currentPlayer = 'X';
 
 function initialiseGame(){
     gameActive = true;
@@ -18,27 +18,30 @@ function initialiseGame(){
         boardSpaces[i] = '';
     }
 
-    playerText.textContent = `${playersTurn} Starts!`;
+    playerText.textContent = `${currentPlayer} Starts!`;
+    cellClick();
 }
 
 function cellClick(){
-    let cellIndex = cell.getAttribute('cellIndex');
-    cells.forEach((cell, cellIndex) => {
+    cells.forEach( cell => {
         cell.addEventListener('click', () => {
-        if(boardSpaces[cellIndex] !== ''){
-            return;
-        }
+            const indexCell = parseInt(cell.getAttribute('cellIndex'));
+            chosenCell(cell, indexCell);
+        });
+    } )
+}
 
-        cellInput(cell, cellIndex);
-        console.log(boardSpaces)
+function chosenCell(cell,index){
+
+    if(boardSpaces[index] != ''){
+        return;
     }
-)})}
 
+    boardSpaces[index] = currentPlayer;
+    playerText.textContent = `${currentPlayer}'s Turn!`;
+    cell.textContent = currentPlayer;
 
-function cellInput(cell, cellIndex){
-
-    boardSpaces[cellIndex] = playersTurn;
-    cell.textContent = playersTurn;
+    console.log(`cell ${boardSpaces[index]} selected`)
 
 }
 
